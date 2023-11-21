@@ -1,6 +1,6 @@
 {
   "name": "@soybeanjs/color-palette",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "elegant color palette",
   "packageManager": "pnpm@8.10.5",
   "author": {
