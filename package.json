@@ -1,0 +1,58 @@
+{
+  "name": "@soybeanjs/color-palette",
+  "version": "0.0.0",
+  "description": "elegant color palette",
+  "packageManager": "pnpm@8.10.5",
+  "author": {
+    "name": "Soybean",
+    "email": "soybeanjs@outlook.com",
+    "url": "https://github.com/soybeanjs"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/soybeanjs/color-palette",
+  "repository": {
+    "url": "https://github.com/soybeanjs/color-palette.git"
+  },
+  "bugs": {
+    "url": "https://github.com/soybeanjs/color-palette/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "stub": "unbuild --stub",
+    "build": "pnpm typecheck && unbuild",
+    "lint": "eslint .",
+    "format": "soy prettier-write",
+    "commit": "soy git-commit",
+    "cleanup": "soy cleanup",
+    "update-pkg": "soy ncu",
+    "publish-pkg": "pnpm -r publish --access public",
+    "release": "pnpm soy release",
+    "typecheck": "tsc --noEmit --skipLibCheck"
+  },
+  "dependencies": {
+    "colord": "2.9.3"
+  },
+  "devDependencies": {
+    "@soybeanjs/cli": "0.7.9",
+    "@types/node": "20.9.3",
+    "eslint": "^8.54.0",
+    "eslint-config-soybeanjs": "0.5.8",
+    "typescript": "5.3.2",
+    "unbuild": "2.0.0"
+  }
+}
