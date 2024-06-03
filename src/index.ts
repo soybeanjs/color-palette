@@ -154,6 +154,8 @@ export function getNearestColorPaletteFamily(color: string, families: ColorPalet
   return paletteFamily;
 }
 
+export { getColorName };
+
 export type {
   ColorPalette,
   ColorPaletteFamily,
