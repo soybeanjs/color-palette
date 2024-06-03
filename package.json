@@ -1,7 +1,7 @@
 {
   "name": "color-palette",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@9.1.4",
   "sideEffects": false,
