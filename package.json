@@ -1,9 +1,14 @@
 {
-  "name": "color-palette",
+  "name": "@soybeanjs/color-palette",
   "type": "module",
   "version": "0.1.0",
-  "private": true,
   "packageManager": "pnpm@9.1.4",
+  "repository": {
+    "url": "https://github.com/soybeanjs/color-palette"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "sideEffects": false,
   "exports": {
     ".": {
