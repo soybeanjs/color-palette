@@ -89,5 +89,3 @@ export function transformColorWithOpacity(color: AnyColor, alpha: number, bgColo
 export function isWhiteColor(color: AnyColor) {
   return colord(color).isEqual('#ffffff');
 }
-
-export { colord };
