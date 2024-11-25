@@ -46,7 +46,7 @@
     "simple-git-hooks": "2.11.1",
     "tsup": "8.0.2",
     "tsx": "4.11.0",
-    "typescript": "5.4.5"
+    "typescript": "5.7.2"
   },
   "simple-git-hooks": {
     "commit-msg": "pnpm soy git-commit-verify",
