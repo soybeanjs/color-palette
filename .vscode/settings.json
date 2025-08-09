@@ -1,10 +1,9 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
-  },
-  "eslint.experimental.useFlatConfig": true,
-  "editor.formatOnSave": false,
-  "eslint.validate": ["json", "jsonc"],
-  "prettier.enable": false
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.organizeImports": "never"
+	},
+	"editor.formatOnSave": false,
+	"eslint.validate": ["javascript", "typescript", "json", "jsonc"],
+	"prettier.enable": false
 }

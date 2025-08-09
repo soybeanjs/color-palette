@@ -5,47 +5,41 @@
  */
 export type ColorPaletteNumber = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950;
 
-/** the color palette */
-export type ColorPalette = {
-  /** the color hex value */
-  hex: string;
-  /**
-   * the color number
-   *
-   * - 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950
-   */
-  number: ColorPaletteNumber;
-};
+/**
+ * the color palette
+ */
+export type ColorPalette = Record<ColorPaletteNumber, string>;
 
 /** the color palette family */
-export type ColorPaletteFamily = {
-  /** the color palette family name */
-  name: string;
-  /** the color palettes */
-  palettes: ColorPalette[];
-};
+export interface ColorPaletteFamily {
+	/** the color palette family name */
+	name: string;
+	/** the color palettes */
+	palette: ColorPalette;
+}
+
+export interface ColorPaletteItem {
+	number: ColorPaletteNumber;
+	hex: string;
+}
+
+export interface ColorPaletteItemWithDelta extends ColorPaletteItem {
+	delta: number;
+}
 
 /** the color palette with delta */
-export type ColorPaletteWithDelta = ColorPalette & {
-  delta: number;
-};
+export interface ColorPaletteFamilyWithDelta extends ColorPaletteFamily {
+	/** the delta of the color palette */
+	delta: number;
+}
 
 /** the color palette family with nearest palette */
-export type ColorPaletteFamilyWithNearestPalette = ColorPaletteFamily & {
-  nearestPalette: ColorPaletteWithDelta;
-  nearestLightnessPalette: ColorPaletteWithDelta;
-};
+export interface ColorPaletteFamilyWithNearestPalette extends ColorPaletteFamily {
+	/** the matched nearest palette */
+	matched: ColorPaletteItemWithDelta;
+	/** the matched nearest lightness palette */
+	lightness: ColorPaletteItemWithDelta;
+}
 
-/** the color palette match */
-export type ColorPaletteMatch = ColorPaletteFamily & {
-  /** the color map of the palette */
-  colorMap: Map<ColorPaletteNumber, ColorPalette>;
-  /**
-   * the main color of the palette
-   *
-   * which number is 500
-   */
-  main: ColorPalette;
-  /** the match color of the palette */
-  match: ColorPalette;
-};
+/** the matched color palette family */
+export interface MatchedColorPaletteFamily extends ColorPaletteItem, ColorPaletteFamily {}

@@ -1,58 +1,67 @@
 {
-  "name": "@soybeanjs/color-palette",
-  "type": "module",
-  "version": "0.1.1",
-  "packageManager": "pnpm@9.1.4",
-  "repository": {
-    "url": "https://github.com/soybeanjs/color-palette"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": ["dist"],
-  "scripts": {
-    "build": "tsup",
-    "cleanup": "soy cleanup",
-    "commit": "soy git-commit",
-    "dev": "tsup --watch",
-    "lint": "eslint . --fix",
-    "prepare": "simple-git-hooks",
-    "publish-pkg": "pnpm publish --access public",
-    "release": "soy release",
-    "typecheck": "tsc --noEmit --skipLibCheck",
-    "update-pkg": "soy ncu"
-  },
-  "dependencies": {
-    "colord": "2.9.3"
-  },
-  "devDependencies": {
-    "@soybeanjs/cli": "1.1.1",
-    "@soybeanjs/eslint-config": "1.4.3",
-    "@types/cli-progress": "3.11.6",
-    "@types/node": "22.10.2",
-    "eslint": "9.16.0",
-    "lint-staged": "15.2.11",
-    "simple-git-hooks": "2.11.1",
-    "tsup": "8.3.5",
-    "tsx": "4.19.2",
-    "typescript": "5.7.2"
-  },
-  "simple-git-hooks": {
-    "commit-msg": "pnpm soy git-commit-verify",
-    "pre-commit": "pnpm typecheck && pnpm lint-staged"
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
-  }
+	"name": "@soybeanjs/color-palette",
+	"type": "module",
+	"version": "0.1.1",
+	"packageManager": "pnpm@10.14.0",
+	"description": "generate color palette for tailwindcss, antd, nearest color palette",
+	"author": {
+		"name": "Soybean",
+		"email": "soybeanjs@outlook.com",
+		"url": "https://github.com/soybeanjs"
+	},
+	"license": "MIT",
+	"homepage": "https://github.com/soybeanjs/color-palette",
+	"repository": {
+		"url": "https://github.com/soybeanjs/color-palette.git"
+	},
+	"bugs": {
+		"url": "https://github.com/soybeanjs/color-palette/issues"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.js"
+		}
+	},
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": ["dist"],
+	"scripts": {
+		"build": "tsdown",
+		"cleanup": "soy cleanup",
+		"commit": "soy git-commit",
+		"dev": "tsdown",
+		"lint": "eslint . --fix",
+		"prepare": "simple-git-hooks",
+		"publish-pkg": "pnpm publish --access public",
+		"release": "soy release",
+		"typecheck": "tsc --noEmit --skipLibCheck",
+		"update-pkg": "soy ncu"
+	},
+	"dependencies": {
+		"colord": "2.9.3"
+	},
+	"devDependencies": {
+		"@soybeanjs/cli": "1.3.1",
+		"@soybeanjs/eslint-config": "1.7.1",
+		"@types/node": "24.2.1",
+		"eslint": "9.33.0",
+		"lint-staged": "16.1.5",
+		"simple-git-hooks": "2.13.1",
+		"tsdown": "0.13.4",
+		"tsx": "4.20.3",
+		"typescript": "5.9.2"
+	},
+	"simple-git-hooks": {
+		"commit-msg": "pnpm soy git-commit-verify",
+		"pre-commit": "pnpm typecheck && pnpm lint-staged"
+	},
+	"lint-staged": {
+		"*": "eslint --fix"
+	}
 }
