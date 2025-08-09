@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.2.0-beta.2](https://github.com/soybeanjs/color-palette/compare/v0.2.0-beta.1...v0.2.0-beta.2) (2025-08-10)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **README**: update description and usage examples for color palette generation &nbsp;-&nbsp; by @soybeanjs [<samp>(bf379)</samp>](https://github.com/soybeanjs/color-palette/commit/bf37961)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.2.0-beta.1](https://github.com/soybeanjs/color-palette/compare/v0.1.1...v0.2.0-beta.1) (2025-08-10)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
