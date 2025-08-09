@@ -1,6 +1,6 @@
 # color-palette
 
-a color palette algorithm of the site [uicolors](https://uicolors.app/create)
+Generate color palette for tailwindcss, antd, nearest color palette
 
 ## Usage
 
@@ -14,9 +14,8 @@ pnpm i @soybeanjs/color-palette
 
 ```ts
 import {
-  colorPalettes,
-  getColorPalette,
-  getColorByColorPaletteNumber,
-  getColorName,
+  generateAntDesignPalette,
+  generateNearestPalette,
+  generateTailwindPalette
 } from "@soybeanjs/color-palette";
 ```
