@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       colord:
-        specifier: 2.9.3
+        specifier: latest
         version: 2.9.3
     devDependencies:
       '@soybeanjs/cli':
