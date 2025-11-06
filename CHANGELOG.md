@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.2.1](https://github.com/soybeanjs/color-palette/compare/v0.2.0...v0.2.1) (2025-11-06)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **tsdown**: update platform to neutral and adjust external dependencies &nbsp;-&nbsp; by @soybeanjs [<samp>(afb79)</samp>](https://github.com/soybeanjs/color-palette/commit/afb79b2)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.2.0](https://github.com/soybeanjs/color-palette/compare/v0.1.1...v0.2.0) (2025-11-06)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
