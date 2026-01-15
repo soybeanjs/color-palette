@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.0.7](https://github.com/soybeanjs/colord/compare/v0.0.6...v0.0.7) (2026-01-15)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: remove unused deps &nbsp;-&nbsp; by @soybeanjs [<samp>(d0ad9)</samp>](https://github.com/soybeanjs/colord/commit/d0ad9c9)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.6](https://github.com/soybeanjs/colord/compare/v0.0.5...v0.0.6) (2026-01-15)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
