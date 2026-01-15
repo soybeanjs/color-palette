@@ -5,7 +5,7 @@ interface ConvertOptions {
   closest?: boolean;
 }
 
-declare module '../colord' {
+declare module '@soybeanjs/colord' {
   interface Colord {
     /** Finds CSS color keyword that matches with the color value */
     toName(options?: ConvertOptions): string | undefined;

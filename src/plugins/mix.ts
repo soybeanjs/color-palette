@@ -1,9 +1,9 @@
 import type { AnyColor } from '../types';
 import type { Plugin } from '../extend';
 import { mix as mixColor } from '../shared/manipulate';
-import type { Colord } from '../colord';
+import type { Colord as ColordInstance } from '../colord';
 
-declare module '../colord' {
+declare module '@soybeanjs/colord' {
   interface Colord {
     /**
      * Produces a mixture of two colors through CIE LAB color space and returns a new Colord instance.
@@ -41,7 +41,7 @@ export const mixPlugin: Plugin = (ColordClass): void => {
   /**
    * Generate a palette from mixing a source color with another.
    */
-  function mixPalette(source: Colord, hex: string, count = 5): Colord[] {
+  function mixPalette(source: ColordInstance, hex: string, count = 5): ColordInstance[] {
     const palette = [];
     const step = 1 / (count - 1);
     for (let i = 0; i <= count - 1; i += 1) {

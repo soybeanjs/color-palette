@@ -2,7 +2,7 @@ import type { LchColor } from '../types';
 import type { Plugin } from '../extend';
 import { parseLch, parseLchString, rgbToLch, rgbToLchString, roundLch } from '../models/lch';
 
-declare module '../colord' {
+declare module '@soybeanjs/colord' {
   interface Colord {
     /**
      * Converts a color to CIELCH (Lightness-Chroma-Hue) color space and returns an object.

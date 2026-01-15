@@ -2,7 +2,7 @@ import type { OklabColor } from '../types';
 import type { Plugin } from '../extend';
 import { parseOklab, parseOklabString, rgbToOklab, roundOklab } from '../models/oklab';
 
-declare module '../colord' {
+declare module '@soybeanjs/colord' {
   interface Colord {
     toOklab(): OklabColor;
   }

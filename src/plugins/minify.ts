@@ -1,4 +1,4 @@
-import type { Colord } from '../colord';
+import type { Colord as ColordInstance } from '../colord';
 import type { Plugin } from '../extend';
 import { round } from '../utils';
 
@@ -11,7 +11,7 @@ interface MinificationOptions {
   transparent?: boolean;
 }
 
-declare module '../colord' {
+declare module '@soybeanjs/colord' {
   interface Colord {
     /** Returns the shortest string representation of the color */
     minify(options?: MinificationOptions): string;
@@ -23,7 +23,7 @@ declare module '../colord' {
  */
 export const minifyPlugin: Plugin = (ColordClass): void => {
   // Finds the shortest hex representation
-  const minifyHex = (instance: Colord): string | null => {
+  const minifyHex = (instance: ColordInstance): string | null => {
     const hex = instance.toHex();
     const alpha = instance.alpha();
     const [, r1, r2, g1, g2, b1, b2, a1, a2] = hex.split('');

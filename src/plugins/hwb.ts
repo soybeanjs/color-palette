@@ -2,7 +2,7 @@ import type { HwbColor } from '../types';
 import type { Plugin } from '../extend';
 import { parseHwb, parseHwbString, rgbToHwb, rgbToHwbString, roundHwb } from '../models/hwb';
 
-declare module '../colord' {
+declare module '@soybeanjs/colord' {
   interface Colord {
     /**
      * Converts a color to HWB (Hue-Whiteness-Blackness) color space and returns an object.

@@ -9,7 +9,7 @@ export type HarmonyType =
   | 'tetradic'
   | 'triadic';
 
-declare module '../colord' {
+declare module '@soybeanjs/colord' {
   interface Colord {
     /**
      * Returns an array of harmony colors as `Colord` instances.

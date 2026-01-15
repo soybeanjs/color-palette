@@ -9,7 +9,7 @@ interface ReadabilityOptions {
   size?: 'normal' | 'large';
 }
 
-declare module '../colord' {
+declare module '@soybeanjs/colord' {
   interface Colord {
     /**
      * Returns the relative luminance of a color,
