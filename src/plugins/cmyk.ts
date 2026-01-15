@@ -2,7 +2,7 @@ import type { CmykColor } from '../types';
 import type { Plugin } from '../extend';
 import { parseCmyk, parseCmykString, rgbToCmyk, rgbToCmykString, roundCmyk } from '../models/cmyk';
 
-declare module '@soybeanjs/colord' {
+declare module '../colord' {
   interface Colord {
     /**
      * Converts a color to CMYK color space and returns an object.

@@ -8,8 +8,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["./src/*"],
-      "@soybeanjs/colord": ["./src/colord.ts"]
+      "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
     "types": ["node"],

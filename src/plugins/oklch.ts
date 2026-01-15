@@ -2,7 +2,7 @@ import type { OklchColor } from '../types';
 import type { Plugin } from '../extend';
 import { parseOklch, parseOklchString, rgbToOklch, rgbToOklchString, roundOklch } from '../models/oklch';
 
-declare module '@soybeanjs/colord' {
+declare module '../colord' {
   interface Colord {
     toOklch(): OklchColor;
     toOklchString(): string;

@@ -11,7 +11,7 @@ interface MinificationOptions {
   transparent?: boolean;
 }
 
-declare module '@soybeanjs/colord' {
+declare module '../colord' {
   interface Colord {
     /** Returns the shortest string representation of the color */
     minify(options?: MinificationOptions): string;

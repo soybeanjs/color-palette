@@ -4,7 +4,7 @@ import { parseLab, parseLabString, rgbToLab, roundLab } from '../models/lab';
 import { getDeltaE2000 } from '../shared/get';
 import { clamp, round } from '../utils';
 
-declare module '@soybeanjs/colord' {
+declare module '../colord' {
   interface Colord {
     /**
      * Converts a color to CIELAB color space and returns an object.

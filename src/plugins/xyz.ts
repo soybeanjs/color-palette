@@ -2,7 +2,7 @@ import type { XyzColor } from '../types';
 import type { Plugin } from '../extend';
 import { parseXyz, rgbToXyz, roundXyz } from '../models/xyz';
 
-declare module '@soybeanjs/colord' {
+declare module '../colord' {
   interface Colord {
     toXyz(): XyzColor;
   }

@@ -3,7 +3,7 @@ import type { Plugin } from '../extend';
 import { mix as mixColor } from '../shared/manipulate';
 import type { Colord as ColordInstance } from '../colord';
 
-declare module '@soybeanjs/colord' {
+declare module '../colord' {
   interface Colord {
     /**
      * Produces a mixture of two colors through CIE LAB color space and returns a new Colord instance.
