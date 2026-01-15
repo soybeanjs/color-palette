@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [v0.0.6](https://github.com/soybeanjs/colord/compare/v0.0.5...v0.0.6) (2026-01-15)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **color**:
+  - update clamping logic to improve value handling and enhance gamut checking in color conversions &nbsp;-&nbsp; by @soybeanjs [<samp>(9f1e8)</samp>](https://github.com/soybeanjs/colord/commit/9f1e8b5)
+  - enhance color parsing and conversion logic with input source handling and gamut checks &nbsp;-&nbsp; by @soybeanjs [<samp>(f2d1b)</samp>](https://github.com/soybeanjs/colord/commit/f2d1b71)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.5](https://github.com/soybeanjs/colord/compare/v0.0.4...v0.0.5) (2026-01-15)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
