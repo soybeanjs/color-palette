@@ -1,26 +1,41 @@
 {
-  "name": "color",
+  "name": "@soybeanjs/colord",
   "type": "module",
   "version": "0.0.0",
-  "private": true,
   "packageManager": "pnpm@10.28.0",
+  "description": "A tiny yet powerful tool for high-performance color manipulations and conversions",
+  "author": {
+    "name": "Soybean",
+    "email": "soybeanjs@outlook.com",
+    "url": "https://github.com/soybeanjs"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/soybeanjs/colord",
+  "repository": {
+    "url": "https://github.com/soybeanjs/colord.git"
+  },
+  "bugs": {
+    "url": "https://github.com/soybeanjs/colord/issues"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./plugins/*": {
+      "types": "./dist/plugins/*.d.ts",
+      "import": "./dist/plugins/*.js",
+      "require": "./dist/plugins/*.js"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "tsdown",
     "cleanup": "soy cleanup",
@@ -46,9 +61,12 @@
     "@soybeanjs/eslint-config": "1.7.5",
     "@types/cli-progress": "3.11.6",
     "@types/node": "25.0.8",
+    "@types/tinycolor2": "^1.4.6",
+    "colord": "^2.9.3",
     "eslint": "9.39.2",
     "lint-staged": "16.2.7",
     "simple-git-hooks": "2.13.1",
+    "tinycolor2": "^1.6.0",
     "tsdown": "0.19.0",
     "tsx": "4.21.0",
     "typescript": "5.9.3"
