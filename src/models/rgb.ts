@@ -35,17 +35,6 @@ export const clampLinearRgb = (rgb: RgbColor): RgbColor => {
   };
 };
 
-export const roundLinearRgb = (rgb: RgbColor): RgbColor => {
-  const { r, g, b, alpha } = rgb;
-
-  return {
-    r: round(r),
-    g: round(g),
-    b: round(b),
-    alpha: round(alpha, ALPHA_PRECISION)
-  };
-};
-
 export const parseRgb = ({ r, g, b, alpha = 1 }: InputObject): RgbColor | null => {
   if (!isPresent(r) || !isPresent(g) || !isPresent(b)) return null;
 
