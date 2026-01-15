@@ -1,10 +1,11 @@
 import type { OklchColor } from '../types';
 import type { Plugin } from '../extend';
-import { parseOklch, parseOklchString, rgbToOklch, roundOklch } from '../models/oklch';
+import { parseOklch, parseOklchString, rgbToOklch, rgbToOklchString, roundOklch } from '../models/oklch';
 
 declare module '@soybeanjs/colord' {
   interface Colord {
     toOklch(): OklchColor;
+    toOklchString(): string;
   }
 }
 
@@ -15,6 +16,10 @@ declare module '@soybeanjs/colord' {
 export const oklchPlugin: Plugin = (ColordClass, parsers): void => {
   ColordClass.prototype.toOklch = function toOklch() {
     return roundOklch(rgbToOklch(this.rgb));
+  };
+
+  ColordClass.prototype.toOklchString = function toOklchString() {
+    return rgbToOklchString(this.rgb);
   };
 
   parsers.string.push([parseOklchString, 'oklch']);

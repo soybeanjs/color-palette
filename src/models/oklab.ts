@@ -101,7 +101,7 @@ export const parseOklabString = (input: string): RgbColor | null => {
   return oklabToRgb(oklab);
 };
 
-export const oklabToOklabString = (oklab: OklabColor): string => {
-  const { l, a, b, alpha } = roundOklab(oklab);
+export const rgbToOklabString = (rgb: RgbColor): string => {
+  const { l, a, b, alpha } = roundOklab(rgbToOklab(rgb));
   return alpha < 1 ? `oklab(${l}% ${a} ${b} / ${alpha})` : `oklab(${l}% ${a} ${b})`;
 };
