@@ -35,7 +35,7 @@ export const parseHex = (hexStr: string): RgbColor | null => {
 
 /** Formats any decimal number (e.g. 128) as a hexadecimal string (e.g. "08") */
 const format = (number: number): string => {
-  const hex = number.toString(16);
+  const hex = Math.round(number).toString(16);
   return hex.length < 2 ? `0${hex}` : hex;
 };
 

@@ -1,6 +1,14 @@
 import type { OklabColor } from '../types';
 import type { Plugin } from '../extend';
-import { parseOklab, parseOklabString, rgbToOklab, rgbToOklabString, roundOklab } from '../models/oklab';
+import {
+  parseOklabBySource,
+  parseOklabStringToRgb,
+  parseOklabToRgb,
+  rgbToOklab,
+  rgbToOklabString,
+  roundOklab,
+  toOklabStringBySource
+} from '../models/oklab';
 
 declare module '../colord' {
   interface Colord {
@@ -15,15 +23,21 @@ declare module '../colord' {
  */
 export const oklabPlugin: Plugin = (ColordClass, parsers): void => {
   ColordClass.prototype.toOklab = function toOklab() {
-    return roundOklab(rgbToOklab(this.rgb));
+    const source = this.getSource();
+
+    const oklab = parseOklabBySource(source) || rgbToOklab(this.rgb);
+
+    return roundOklab(oklab);
   };
 
   ColordClass.prototype.toOklabString = function toOklabString() {
-    return rgbToOklabString(this.rgb);
+    const source = this.getSource();
+
+    return toOklabStringBySource(source) || rgbToOklabString(this.rgb);
   };
 
-  parsers.string.push([parseOklabString, 'oklab']);
-  parsers.object.push([parseOklab, 'oklab']);
+  parsers.string.push([parseOklabStringToRgb, 'oklab']);
+  parsers.object.push([parseOklabToRgb, 'oklab']);
 };
 
 export default oklabPlugin;

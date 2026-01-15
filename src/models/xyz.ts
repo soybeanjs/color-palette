@@ -1,18 +1,20 @@
-import { ALPHA_PRECISION, D50, M_SRGB_TO_XYZ_D65, M_XYZ_D65_TO_SRGB } from '../constants';
+import { ALPHA_PRECISION, D65, M_SRGB_TO_XYZ_D65, M_XYZ_D65_TO_SRGB } from '../constants';
 import { clamp, isPresent, mul3x3, round } from '../utils';
-import type { InputObject, RgbColor, XyzColor } from '../types';
+import type { InputObject, InputSource, RgbColor, XyzColor } from '../types';
 import { clampRgb, linearRgbToRgb, rgbToLinearRgb } from './rgb';
 
 /**
- * Limits XYZ axis values assuming XYZ is relative to D50.
+ * Limits XYZ axis values.
+ * Using D65 white point as upper bound since it's the standard for sRGB.
+ * Allow values slightly beyond D65 for wider gamut support.
  */
 export const clampXyz = (xyz: XyzColor): XyzColor => {
   const { x, y, z, alpha } = xyz;
 
   return {
-    x: clamp(x, 0.0001, D50.x),
-    y: clamp(y, 0.0001, D50.y),
-    z: clamp(z, 0.0001, D50.z),
+    x: clamp(x, 0, D65.x * 1.2),
+    y: clamp(y, 0, D65.y * 1.2),
+    z: clamp(z, 0, D65.z * 1.2),
     alpha: clamp(alpha)
   };
 };
@@ -70,15 +72,33 @@ export const rgbToXyz = (rgb: RgbColor): XyzColor => {
   return clampXyz(xyz);
 };
 
-export const parseXyz = ({ x, y, z, alpha = 1 }: InputObject): RgbColor | null => {
+export const parseXyz = ({ x, y, z, alpha = 1 }: InputObject): XyzColor | null => {
   if (!isPresent(x) || !isPresent(y) || !isPresent(z)) return null;
 
-  const xyz = clampXyz({
+  return clampXyz({
     x: Number(x),
     y: Number(y),
     z: Number(z),
     alpha: Number(alpha)
   });
+};
+
+export const parseXyzToRgb = (input: InputObject): RgbColor | null => {
+  const xyz = parseXyz(input);
+
+  if (!xyz) return null;
 
   return xyzToRgb(xyz);
+};
+
+export const parseXyzBySource = (source?: InputSource): XyzColor | null => {
+  if (!source || source.format !== 'xyz') return null;
+
+  const { input } = source;
+
+  if (typeof input === 'object') {
+    return parseXyz(input);
+  }
+
+  return null;
 };

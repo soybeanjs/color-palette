@@ -1,6 +1,6 @@
 import type { XyzColor } from '../types';
 import type { Plugin } from '../extend';
-import { parseXyz, rgbToXyz, roundXyz } from '../models/xyz';
+import { parseXyzBySource, parseXyzToRgb, rgbToXyz, roundXyz } from '../models/xyz';
 
 declare module '../colord' {
   interface Colord {
@@ -15,10 +15,14 @@ declare module '../colord' {
  */
 export const xyzPlugin: Plugin = (ColordClass, parsers): void => {
   ColordClass.prototype.toXyz = function toXyz() {
-    return roundXyz(rgbToXyz(this.rgb));
+    const source = this.getSource();
+
+    const xyz = parseXyzBySource(source) || rgbToXyz(this.rgb);
+
+    return roundXyz(xyz);
   };
 
-  parsers.object.push([parseXyz, 'xyz']);
+  parsers.object.push([parseXyzToRgb, 'xyz']);
 };
 
 export default xyzPlugin;

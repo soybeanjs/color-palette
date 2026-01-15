@@ -1,6 +1,14 @@
 import type { AnyColor, LabColor } from '../types';
 import type { Plugin } from '../extend';
-import { parseLab, parseLabString, rgbToLab, roundLab } from '../models/lab';
+import {
+  parseLabBySource,
+  parseLabStringToRgb,
+  parseLabToRgb,
+  rgbToLab,
+  rgbToLabString,
+  roundLab,
+  toLabStringBySource
+} from '../models/lab';
 import { getDeltaE2000 } from '../shared/get';
 import { clamp, round } from '../utils';
 
@@ -11,6 +19,11 @@ declare module '../colord' {
      * The object always includes `alpha` value [0, 1].
      */
     toLab(): LabColor;
+
+    /**
+     * Converts a color to CIELAB color space and returns a string.
+     */
+    toLabString(): string;
 
     /**
      * Calculates the perceived color difference for two colors according to
@@ -27,7 +40,17 @@ declare module '../colord' {
  */
 export const labPlugin: Plugin = (ColordClass, parsers): void => {
   ColordClass.prototype.toLab = function toLab() {
-    return roundLab(rgbToLab(this.rgb));
+    const source = this.getSource();
+
+    const lab = parseLabBySource(source) || rgbToLab(this.rgb);
+
+    return roundLab(lab);
+  };
+
+  ColordClass.prototype.toLabString = function toLabString() {
+    const source = this.getSource();
+
+    return toLabStringBySource(source) || rgbToLabString(this.rgb);
   };
 
   ColordClass.prototype.delta = function delta(color = '#FFF') {
@@ -36,8 +59,8 @@ export const labPlugin: Plugin = (ColordClass, parsers): void => {
     return clamp(round(d, 3));
   };
 
-  parsers.object.push([parseLab, 'lab']);
-  parsers.string.push([parseLabString, 'lab']);
+  parsers.string.push([parseLabStringToRgb, 'lab']);
+  parsers.object.push([parseLabToRgb, 'lab']);
 };
 
 export default labPlugin;

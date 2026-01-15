@@ -1,6 +1,14 @@
 import type { LchColor } from '../types';
 import type { Plugin } from '../extend';
-import { parseLch, parseLchString, rgbToLch, rgbToLchString, roundLch } from '../models/lch';
+import {
+  parseLchBySource,
+  parseLchStringToRgb,
+  parseLchToRgb,
+  rgbToLch,
+  rgbToLchString,
+  roundLch,
+  toLchStringBySource
+} from '../models/lch';
 
 declare module '../colord' {
   interface Colord {
@@ -25,15 +33,21 @@ declare module '../colord' {
  */
 export const lchPlugin: Plugin = (ColordClass, parsers): void => {
   ColordClass.prototype.toLch = function toLch() {
-    return roundLch(rgbToLch(this.rgb));
+    const source = this.getSource();
+
+    const lch = parseLchBySource(source) || rgbToLch(this.rgb);
+
+    return roundLch(lch);
   };
 
   ColordClass.prototype.toLchString = function toLchString() {
-    return rgbToLchString(this.rgb);
+    const source = this.getSource();
+
+    return toLchStringBySource(source) || rgbToLchString(this.rgb);
   };
 
-  parsers.string.push([parseLchString, 'lch']);
-  parsers.object.push([parseLch, 'lch']);
+  parsers.string.push([parseLchStringToRgb, 'lch']);
+  parsers.object.push([parseLchToRgb, 'lch']);
 };
 
 export default lchPlugin;

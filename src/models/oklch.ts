@@ -1,6 +1,6 @@
 import { ALPHA_PRECISION, OKLAB_M1, OKLAB_M1_INV, OKLAB_M2, OKLAB_M2_INV } from '../constants';
 import { clamp, clampHue, isPresent, mul3x3, parseAlpha, parseHue, parseValueToDecimal, round } from '../utils';
-import type { InputObject, OklchColor, RgbColor, Vector3 } from '../types';
+import type { InputObject, InputSource, OklchColor, RgbColor, Vector3 } from '../types';
 import { clampLinearRgb, clampRgb, linearRgbToRgb, rgbToLinearRgb } from './rgb';
 
 export const clampOklch = (oklch: OklchColor): OklchColor => {
@@ -136,7 +136,7 @@ export const rgbToOklch = (rgb: RgbColor): OklchColor => {
   return clampOklch({ l, c: chroma, h: hue, alpha: rgb.alpha });
 };
 
-export const parseOklch = ({ l, c, h, alpha = 1 }: InputObject): RgbColor | null => {
+export const parseOklch = ({ l, c, h, alpha = 1 }: InputObject): OklchColor | null => {
   if (!isPresent(l) || !isPresent(c) || !isPresent(h)) return null;
 
   const oklch = clampOklch({
@@ -145,6 +145,14 @@ export const parseOklch = ({ l, c, h, alpha = 1 }: InputObject): RgbColor | null
     h: Number(h),
     alpha: Number(alpha)
   });
+
+  return oklch;
+};
+
+export const parseOklchToRgb = (input: InputObject): RgbColor | null => {
+  const oklch = parseOklch(input);
+
+  if (!oklch) return null;
 
   return oklchToRgb(oklch);
 };
@@ -159,28 +167,60 @@ export const parseOklch = ({ l, c, h, alpha = 1 }: InputObject): RgbColor | null
 const oklchMatcher =
   /^oklch\(\s*([+-]?[\d.]+)%?\s+([+-]?[\d.]+)\s+([+-]?[\d.]+)(deg|grad|rad|turn)?(?:\s*\/\s*([+-]?[\d.]+%?))?\s*\)$/i;
 
-/**
- * Parses a valid OKLCH CSS color function/string
- * https://www.w3.org/TR/css-color-4/#specifying-oklch
- * @param input
- * @returns
- */
-export const parseOklchString = (input: string): RgbColor | null => {
+export const parseOklchString = (input: string): OklchColor | null => {
   const match = oklchMatcher.exec(input);
   if (!match) return null;
+
   const [_, l, c, h, unit, alpha] = match;
 
-  const oklch = clampOklch({
+  return clampOklch({
     l: parseValueToDecimal(l),
     c: Number.parseFloat(c),
     h: parseHue(h, unit),
     alpha: parseAlpha(alpha)
   });
+};
+
+export const parseOklchStringToRgb = (input: string): RgbColor | null => {
+  const oklch = parseOklchString(input);
+
+  if (!oklch) return null;
 
   return oklchToRgb(oklch);
 };
 
-export const rgbToOklchString = (rgb: RgbColor): string => {
-  const { l, c, h, alpha } = roundOklch(rgbToOklch(rgb));
+export const toOklchString = (oklch: OklchColor): string => {
+  const { l, c, h, alpha } = roundOklch(oklch);
+
   return alpha < 1 ? `oklch(${l} ${c} ${h} / ${alpha})` : `oklch(${l} ${c} ${h})`;
+};
+
+export const rgbToOklchString = (rgb: RgbColor): string => {
+  const oklch = rgbToOklch(rgb);
+
+  return toOklchString(oklch);
+};
+
+export const parseOklchBySource = (source?: InputSource): OklchColor | null => {
+  if (!source || source.format !== 'oklch') return null;
+
+  const { input } = source;
+
+  if (typeof input === 'string') {
+    return parseOklchString(input);
+  }
+
+  if (typeof input === 'object') {
+    return parseOklch(input);
+  }
+
+  return null;
+};
+
+export const toOklchStringBySource = (source?: InputSource): string | null => {
+  const oklch = parseOklchBySource(source);
+
+  if (!oklch) return null;
+
+  return toOklchString(oklch);
 };

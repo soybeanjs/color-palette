@@ -1,6 +1,6 @@
 import { ALPHA_PRECISION, OKLAB_M1, OKLAB_M1_INV, OKLAB_M2, OKLAB_M2_INV } from '../constants';
 import { clamp, isPresent, mul3x3, parseAlpha, parseValueToDecimal, round } from '../utils';
-import type { InputObject, OklabColor, RgbColor, Vector3 } from '../types';
+import type { InputObject, InputSource, OklabColor, RgbColor, Vector3 } from '../types';
 import { clampLinearRgb, clampRgb, linearRgbToRgb, rgbToLinearRgb } from './rgb';
 
 export const clampOklab = (oklab: OklabColor): OklabColor => {
@@ -51,7 +51,7 @@ export const rgbToOklab = (rgb: RgbColor): OklabColor => {
   return clampOklab({ l, a, b, alpha: rgb.alpha });
 };
 
-export const parseOklab = ({ l, a, b, alpha = 1 }: InputObject): RgbColor | null => {
+export const parseOklab = ({ l, a, b, alpha = 1 }: InputObject): OklabColor | null => {
   if (!isPresent(l) || !isPresent(a) || !isPresent(b)) return null;
 
   const oklab = clampOklab({
@@ -60,6 +60,14 @@ export const parseOklab = ({ l, a, b, alpha = 1 }: InputObject): RgbColor | null
     b: Number(b),
     alpha: Number(alpha)
   });
+
+  return oklab;
+};
+
+export const parseOklabToRgb = (input: InputObject): RgbColor | null => {
+  const oklab = parseOklab(input);
+
+  if (!oklab) return null;
 
   return oklabToRgb(oklab);
 };
@@ -74,29 +82,74 @@ export const parseOklab = ({ l, a, b, alpha = 1 }: InputObject): RgbColor | null
 const oklabMatcher = /^oklab\(\s*([+-]?[\d.]+)%?\s+([+-]?[\d.]+)\s+([+-]?[\d.]+)(?:\s*\/\s*([+-]?[\d.]+%?))?\s*\)$/i;
 
 /**
- * Parses a valid OKLAB CSS color function/string
+ * Parses a valid OKLAB CSS color function/string to OKLAB object
  * https://www.w3.org/TR/css-color-4/#specifying-oklab
- * @param input
- * @returns
  */
-export const parseOklabString = (input: string): RgbColor | null => {
+const parseOklabString = (input: string): OklabColor | null => {
   const match = oklabMatcher.exec(input);
 
   if (!match) return null;
 
   const [_, l, a, b, alpha] = match;
 
-  const oklab = clampOklab({
+  return clampOklab({
     l: parseValueToDecimal(l),
     a: Number.parseFloat(a),
     b: Number.parseFloat(b),
     alpha: parseAlpha(alpha)
   });
+};
+
+/**
+ * Parses a valid OKLAB CSS color function/string to RGB
+ * https://www.w3.org/TR/css-color-4/#specifying-oklab
+ */
+export const parseOklabStringToRgb = (input: string): RgbColor | null => {
+  const oklab = parseOklabString(input);
+
+  if (!oklab) return null;
 
   return oklabToRgb(oklab);
 };
 
-export const rgbToOklabString = (rgb: RgbColor): string => {
-  const { l, a, b, alpha } = roundOklab(rgbToOklab(rgb));
+export const toOklabString = (oklab: OklabColor): string => {
+  const { l, a, b, alpha } = roundOklab(oklab);
   return alpha < 1 ? `oklab(${l}% ${a} ${b} / ${alpha})` : `oklab(${l}% ${a} ${b})`;
+};
+
+export const rgbToOklabString = (rgb: RgbColor): string => {
+  const oklab = rgbToOklab(rgb);
+  return toOklabString(oklab);
+};
+
+/**
+ * Parse OKLAB from cached source input to avoid conversion loss
+ */
+export const parseOklabBySource = (source?: InputSource): OklabColor | null => {
+  if (!source || source.format !== 'oklab') return null;
+
+  const { input } = source;
+
+  // Handle string input
+  if (typeof input === 'string') {
+    return parseOklabString(input);
+  }
+
+  // Handle object input
+  if (typeof input === 'object') {
+    return parseOklab(input);
+  }
+
+  return null;
+};
+
+/**
+ * Convert to OKLAB string from cached source input to avoid conversion loss
+ */
+export const toOklabStringBySource = (source?: InputSource): string | null => {
+  const oklab = parseOklabBySource(source);
+
+  if (!oklab) return null;
+
+  return toOklabString(oklab);
 };

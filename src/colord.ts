@@ -5,7 +5,7 @@ import { rgbToHsl, rgbToHslString, roundHsl } from './models/hsl';
 import { rgbToHsv, roundHsv } from './models/hsv';
 import { changeAlpha, getBrightness, invert, lighten, parse, saturate } from './shared';
 import { round } from './utils';
-import type { AnyColor, HslColor, HsvColor, Input, RgbColor } from './types';
+import type { AnyColor, HslColor, HsvColor, Input, InputSource, RgbColor } from './types';
 
 /**
  * Parses the given input color and creates a new `Colord` instance.
@@ -19,12 +19,27 @@ export const colord = (input: AnyColor | Colord): Colord => {
 export class Colord {
   private readonly parsed: RgbColor | null;
   readonly rgb: RgbColor;
+  private readonly source?: InputSource;
 
   constructor(input: AnyColor) {
     // Internal color format is RGBA object.
     // We do not round the internal RGBA numbers for better conversion accuracy.
-    this.parsed = parse(input as Input)[0];
+    const [rgb, format] = parse(input as Input);
+    this.parsed = rgb;
     this.rgb = this.parsed || { r: 0, g: 0, b: 0, alpha: 1 };
+
+    // Cache original input for lossless conversion back to original format
+    if (format && this.parsed) {
+      this.source = { format, input: input as Input };
+    }
+  }
+
+  /**
+   * Get the original input format if available
+   * @internal
+   */
+  public getSource(): InputSource | undefined {
+    return this.source;
   }
 
   /**

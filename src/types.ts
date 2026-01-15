@@ -88,6 +88,11 @@ export type Format =
 
 export type Input = string | InputObject;
 
+export interface InputSource {
+  format: Format;
+  input: Input;
+}
+
 export type ParseResult = [RgbColor, Format];
 
 export type ParseFunction<I extends Input> = (input: I) => RgbColor | null;
