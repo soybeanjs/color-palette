@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.0.3](https://github.com/soybeanjs/colord/compare/v0.0.2...v0.0.3) (2026-01-15)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **oklch**: correct formatting in rgbToOklchString function for output string &nbsp;-&nbsp; by @soybeanjs [<samp>(cb18c)</samp>](https://github.com/soybeanjs/colord/commit/cb18ca7)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.2](https://github.com/soybeanjs/colord/compare/v0.0.1...v0.0.2) (2026-01-15)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
