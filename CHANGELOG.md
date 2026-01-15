@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [v0.0.5](https://github.com/soybeanjs/colord/compare/v0.0.4...v0.0.5) (2026-01-15)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **rgb**: update rounding precision for RGB values &nbsp;-&nbsp; by @soybeanjs [<samp>(9d23c)</samp>](https://github.com/soybeanjs/colord/commit/9d23c24)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **rgb**: remove roundLinearRgb function to streamline RGB processing &nbsp;-&nbsp; by @soybeanjs [<samp>(ebdaa)</samp>](https://github.com/soybeanjs/colord/commit/ebdaa81)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.4](https://github.com/soybeanjs/colord/compare/v0.0.3...v0.0.4) (2026-01-15)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
