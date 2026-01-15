@@ -1,5 +1,5 @@
 import { ALPHA_PRECISION, OKLAB_M1, OKLAB_M1_INV, OKLAB_M2, OKLAB_M2_INV } from '../constants';
-import { clamp, isPresent, mul3x3, parseAlpha, round } from '../utils';
+import { clamp, isPresent, mul3x3, parseAlpha, parseValueToDecimal, round } from '../utils';
 import type { InputObject, OklabColor, RgbColor, Vector3 } from '../types';
 import { clampLinearRgb, clampRgb, linearRgbToRgb, rgbToLinearRgb } from './rgb';
 
@@ -84,15 +84,10 @@ export const parseOklabString = (input: string): RgbColor | null => {
 
   if (!match) return null;
 
-  const [_, L, a, b, alpha] = match;
-
-  let l = Number.parseFloat(L);
-  if (L.endsWith('%')) {
-    l /= 100;
-  }
+  const [_, l, a, b, alpha] = match;
 
   const oklab = clampOklab({
-    l,
+    l: parseValueToDecimal(l),
     a: Number.parseFloat(a),
     b: Number.parseFloat(b),
     alpha: parseAlpha(alpha)

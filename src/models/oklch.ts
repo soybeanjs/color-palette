@@ -1,5 +1,5 @@
 import { ALPHA_PRECISION, OKLAB_M1, OKLAB_M1_INV, OKLAB_M2, OKLAB_M2_INV } from '../constants';
-import { clamp, clampHue, isPresent, mul3x3, parseAlpha, parseHue, round } from '../utils';
+import { clamp, clampHue, isPresent, mul3x3, parseAlpha, parseHue, parseValueToDecimal, round } from '../utils';
 import type { InputObject, OklchColor, RgbColor, Vector3 } from '../types';
 import { clampLinearRgb, clampRgb, linearRgbToRgb, rgbToLinearRgb } from './rgb';
 
@@ -103,19 +103,15 @@ const oklchMatcher =
 export const parseOklchString = (input: string): RgbColor | null => {
   const match = oklchMatcher.exec(input);
   if (!match) return null;
-  const [_, L, c, h, unit, alpha] = match;
-
-  let l = Number.parseFloat(L);
-  if (L.endsWith('%')) {
-    l /= 100;
-  }
+  const [_, l, c, h, unit, alpha] = match;
 
   const oklch = clampOklch({
-    l,
+    l: parseValueToDecimal(l),
     c: Number.parseFloat(c),
     h: parseHue(h, unit),
     alpha: parseAlpha(alpha)
   });
+
   return oklchToRgb(oklch);
 };
 

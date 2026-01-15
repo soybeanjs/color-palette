@@ -81,3 +81,17 @@ export function parseAlpha(alpha: string | undefined): number {
 
   return value;
 }
+
+/**
+ * parse value to decimal
+ * @param value
+ * @returns the decimal value in [0, 1]
+ */
+export function parseValueToDecimal(value: string): number {
+  const num = Number.parseFloat(value);
+  if (value.endsWith('%') || num > 1) {
+    return clamp(num / 100);
+  }
+
+  return clamp(num);
+}
