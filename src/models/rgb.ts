@@ -17,9 +17,9 @@ export const roundRgb = (rgb: RgbColor): RgbColor => {
   const { r, g, b, alpha } = rgb;
 
   return {
-    r: round(r),
-    g: round(g),
-    b: round(b),
+    r: round(r, 2),
+    g: round(g, 2),
+    b: round(b, 2),
     alpha: round(alpha, ALPHA_PRECISION)
   };
 };
@@ -102,7 +102,7 @@ export function linearToRgb(value: number): number {
   // Linear segment (≤ 0.0031308) vs power curve (gamma 1/2.4)
   const v = value <= 0.0031308 ? value * 12.92 : 1.055 * value ** (1 / 2.4) - 0.055;
 
-  return Math.round(v * 255);
+  return v * 255;
 }
 
 /**
