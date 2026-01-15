@@ -7,25 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      cli-progress:
-        specifier: 3.12.0
-        version: 3.12.0
-      consola:
-        specifier: 3.4.2
-        version: 3.4.2
-      dayjs:
-        specifier: 1.11.19
-        version: 1.11.19
-      execa:
-        specifier: 9.6.1
-        version: 9.6.1
-      kolorist:
-        specifier: 1.8.0
-        version: 1.8.0
-      ofetch:
-        specifier: 1.5.1
-        version: 1.5.1
     devDependencies:
       '@soybeanjs/cli':
         specifier: 1.4.4
@@ -33,18 +14,9 @@ importers:
       '@soybeanjs/eslint-config':
         specifier: 1.7.5
         version: 1.7.5(@typescript-eslint/utils@8.53.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(svelte-eslint-parser@1.4.1)(typescript@5.9.3)
-      '@types/cli-progress':
-        specifier: 3.11.6
-        version: 3.11.6
       '@types/node':
         specifier: 25.0.8
         version: 25.0.8
-      '@types/tinycolor2':
-        specifier: ^1.4.6
-        version: 1.4.6
-      colord:
-        specifier: ^2.9.3
-        version: 2.9.3
       eslint:
         specifier: 9.39.2
         version: 9.39.2(jiti@2.6.1)
@@ -54,9 +26,6 @@ importers:
       simple-git-hooks:
         specifier: 2.13.1
         version: 2.13.1
-      tinycolor2:
-        specifier: ^1.6.0
-        version: 1.6.0
       tsdown:
         specifier: 0.19.0
         version: 0.19.0(synckit@0.11.12)(typescript@5.9.3)
@@ -593,9 +562,6 @@ packages:
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
 
-  '@types/cli-progress@3.11.6':
-    resolution: {integrity: sha512-cE3+jb9WRlu+uOSAugewNpITJDt1VF8dHOopPO4IABFc3SXYL5WE/+PTz/FCdZRRfIujiWW3n3aMbv1eIGVRWA==}
-
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
@@ -604,9 +570,6 @@ packages:
 
   '@types/node@25.0.8':
     resolution: {integrity: sha512-powIePYMmC3ibL0UJ2i2s0WIbq6cg6UyVFQxSCpaPxxzAaziRfimGivjdF943sSGV6RADVbk0Nvlm5P/FB44Zg==}
-
-  '@types/tinycolor2@1.4.6':
-    resolution: {integrity: sha512-iEN8J0BoMnsWBqjVbWH/c0G0Hh7O21lpR2/+PrvAVgWdzL7eexIFm4JN/Wn10PTcmNdtS6U67r499mlWMXOxNw==}
 
   '@typescript-eslint/eslint-plugin@8.53.0':
     resolution: {integrity: sha512-eEXsVvLPu8Z4PkFibtuFJLJOTAV/nPdgtSjkGoPpddpFk3/ym2oy97jynY6ic2m6+nc5M8SE1e9v/mHKsulcJg==}
@@ -906,9 +869,6 @@ packages:
 
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
-
-  colord@2.9.3:
-    resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
 
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
@@ -1745,9 +1705,6 @@ packages:
     resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
     engines: {node: '>=6'}
 
-  tinycolor2@1.6.0:
-    resolution: {integrity: sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==}
-
   tinyexec@1.0.2:
     resolution: {integrity: sha512-W/KYk+NFhkmsYpuHq5JykngiOCnxeVL8v8dFnqxSD8qEEdRfXk1SDM6JzNqcERbcGYj9tMrDQBYV9cjgnunFIg==}
     engines: {node: '>=18'}
@@ -2305,10 +2262,6 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@types/cli-progress@3.11.6':
-    dependencies:
-      '@types/node': 25.0.8
-
   '@types/estree@1.0.8': {}
 
   '@types/json-schema@7.0.15': {}
@@ -2316,8 +2269,6 @@ snapshots:
   '@types/node@25.0.8':
     dependencies:
       undici-types: 7.16.0
-
-  '@types/tinycolor2@1.4.6': {}
 
   '@typescript-eslint/eslint-plugin@8.53.0(@typescript-eslint/parser@8.53.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
     dependencies:
@@ -2614,8 +2565,6 @@ snapshots:
       color-name: 1.1.4
 
   color-name@1.1.4: {}
-
-  colord@2.9.3: {}
 
   colorette@2.0.20: {}
 
@@ -3428,8 +3377,6 @@ snapshots:
       '@pkgr/core': 0.2.9
 
   tapable@2.3.0: {}
-
-  tinycolor2@1.6.0: {}
 
   tinyexec@1.0.2: {}
 
