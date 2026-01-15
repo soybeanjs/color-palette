@@ -7,8 +7,8 @@ export const clampOklch = (oklch: OklchColor): OklchColor => {
   const { l, c, h, alpha } = oklch;
 
   return {
-    l: clamp(l, 0.0001, 1),
-    c: clamp(c, 0.0001, 0.37),
+    l: clamp(l, 0, 1),
+    c: clamp(c, 0, 0.37),
     h: clampHue(h),
     alpha: clamp(alpha)
   };
@@ -25,7 +25,10 @@ export const roundOklch = (oklch: OklchColor): OklchColor => {
   };
 };
 
-export const oklchToRgb = (oklch: OklchColor): RgbColor => {
+/**
+ * Convert OKLCH to Linear RGB without gamut mapping
+ */
+const oklchToLinearRgb = (oklch: OklchColor): RgbColor => {
   const { l, c, h, alpha } = oklch;
 
   // Polar to Cartesian (OKLAB)
@@ -39,14 +42,76 @@ export const oklchToRgb = (oklch: OklchColor): RgbColor => {
   const lms = lmsHat.map(v => v * v * v) as unknown as Vector3;
   const [r, g, b] = mul3x3(OKLAB_M1_INV, lms);
 
-  const lRgb = clampLinearRgb({
-    r,
-    g,
-    b,
-    alpha
-  });
+  return { r, g, b, alpha };
+};
 
-  const rgb = linearRgbToRgb(lRgb);
+/**
+ * Check if a linear RGB color is within sRGB gamut
+ */
+const isInGamut = (linearRgb: RgbColor, epsilon = 0.000001): boolean => {
+  return (
+    linearRgb.r >= -epsilon &&
+    linearRgb.r <= 1 + epsilon &&
+    linearRgb.g >= -epsilon &&
+    linearRgb.g <= 1 + epsilon &&
+    linearRgb.b >= -epsilon &&
+    linearRgb.b <= 1 + epsilon
+  );
+};
+
+/**
+ * Binary search to find maximum chroma that fits in sRGB gamut
+ * @param l - Lightness (0-1)
+ * @param h - Hue (0-360)
+ * @param alpha - Alpha (0-1)
+ * @returns Maximum chroma that fits in sRGB gamut
+ */
+const findGamutChroma = (l: number, h: number, alpha: number): number => {
+  let min = 0;
+  // OKLCH max chroma in sRGB is ~0.4, but we set 0.37 for safety
+  // This matches the clampOklch upper bound
+  let max = 0.37;
+  // Higher precision: 0.00001 instead of 0.0001
+  const epsilon = 0.00001;
+
+  // Quick check if even max chroma is in gamut
+  const maxLinearRgb = oklchToLinearRgb({ l, c: max, h, alpha });
+  if (isInGamut(maxLinearRgb, epsilon)) {
+    return max;
+  }
+
+  // Binary search for maximum in-gamut chroma
+  while (max - min > epsilon) {
+    const mid = (min + max) / 2;
+    const linearRgb = oklchToLinearRgb({ l, c: mid, h, alpha });
+
+    if (isInGamut(linearRgb, epsilon)) {
+      min = mid;
+    } else {
+      max = mid;
+    }
+  }
+
+  return min;
+};
+
+export const oklchToRgb = (oklch: OklchColor): RgbColor => {
+  const { l, h, alpha } = oklch;
+
+  // Try direct conversion first
+  let linearRgb = oklchToLinearRgb(oklch);
+
+  // If out of gamut, reduce chroma to fit
+  if (!isInGamut(linearRgb)) {
+    const maxChroma = findGamutChroma(l, h, alpha);
+    linearRgb = oklchToLinearRgb({ l, c: maxChroma, h, alpha });
+  }
+
+  // Clamp to handle floating point errors
+  linearRgb = clampLinearRgb(linearRgb);
+
+  // Convert to sRGB
+  const rgb = linearRgbToRgb(linearRgb);
 
   return clampRgb(rgb);
 };

@@ -7,7 +7,7 @@ export const clampOklab = (oklab: OklabColor): OklabColor => {
   const { l, a, b, alpha } = oklab;
 
   return {
-    l: clamp(l, 0.0001, 1),
+    l: clamp(l, 0, 1),
     a: clamp(a, -0.4, 0.4),
     b: clamp(b, -0.4, 0.4),
     alpha: clamp(alpha)

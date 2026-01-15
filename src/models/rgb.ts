@@ -28,9 +28,9 @@ export const clampLinearRgb = (rgb: RgbColor): RgbColor => {
   const { r, g, b, alpha } = rgb;
 
   return {
-    r: clamp(r, 0.0001, 1),
-    g: clamp(g, 0.0001, 1),
-    b: clamp(b, 0.0001, 1),
+    r: clamp(r),
+    g: clamp(g),
+    b: clamp(b),
     alpha: clamp(alpha)
   };
 };
