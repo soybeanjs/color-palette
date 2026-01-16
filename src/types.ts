@@ -49,9 +49,17 @@ export type CmykColor = WithAlpha<{
   k: number;
 }>;
 
-export type OklabColor = LabColor;
+export type OklabColor = WithAlpha<{
+  l: number;
+  a: number;
+  b: number;
+}>;
 
-export type OklchColor = LchColor;
+export type OklchColor = WithAlpha<{
+  l: number;
+  c: number;
+  h: number;
+}>;
 
 type PartialAlpha<O> = Omit<O, 'alpha'> & { alpha?: number };
 
@@ -120,3 +128,72 @@ export type Vector3 = readonly [number, number, number];
  * ```
  */
 export type Matrix3x3 = readonly [Vector3, Vector3, Vector3];
+
+/**
+ * the palette color level
+ *
+ * the main color level is 500
+ */
+export type PaletteColorLevel = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950;
+
+export type TailwindPaletteColorKey =
+  | 'slate'
+  | 'gray'
+  | 'zinc'
+  | 'neutral'
+  | 'stone'
+  | 'red'
+  | 'orange'
+  | 'amber'
+  | 'yellow'
+  | 'lime'
+  | 'green'
+  | 'emerald'
+  | 'teal'
+  | 'cyan'
+  | 'sky'
+  | 'blue'
+  | 'indigo'
+  | 'violet'
+  | 'purple'
+  | 'fuchsia'
+  | 'pink'
+  | 'rose';
+
+/**
+ * the tailwind palette color
+ *
+ * the color format is `oklch` string
+ */
+export type TailwindPaletteColor = {
+  [K in TailwindPaletteColorKey]: {
+    [L in PaletteColorLevel]: string;
+  };
+};
+
+export type OutputColorMap = {
+  hex: string;
+  rgb: RgbColor;
+  rgbString: string;
+  oklch: OklchColor;
+  oklchString: string;
+  hsl: HslColor;
+  hslString: string;
+};
+
+export type OutputFormat = keyof OutputColorMap;
+
+export interface NearestPalette<F extends OutputFormat> {
+  /** current color */
+  current: OutputColorMap[F];
+  /** palette color key */
+  paletteKey: TailwindPaletteColorKey;
+  /** palette level */
+  level: PaletteColorLevel;
+  /** palette color */
+  color: OutputColorMap[F];
+  /** the color delta value */
+  delta: number;
+  /** palette colors */
+  palette: Record<PaletteColorLevel, OutputColorMap[F]>;
+}

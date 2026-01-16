@@ -26,6 +26,11 @@
       "import": "./dist/index.js",
       "require": "./dist/index.js"
     },
+    "./palette": {
+      "types": "./dist/palette/index.d.ts",
+      "import": "./dist/palette/index.js",
+      "require": "./dist/palette/index.js"
+    },
     "./plugins/*": {
       "types": "./dist/plugins/*.d.ts",
       "import": "./dist/plugins/*.js",

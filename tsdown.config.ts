@@ -3,7 +3,7 @@ import path from 'node:path';
 import { defineConfig } from 'tsdown';
 
 export default defineConfig({
-  entry: ['src/colord.ts', 'src/index.ts', 'src/plugins/**/*.ts'],
+  entry: ['src/colord.ts', 'src/index.ts', 'src/palette/index.ts', 'src/plugins/**/*.ts'],
   platform: 'neutral',
   clean: true,
   dts: true,
