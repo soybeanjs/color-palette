@@ -39,6 +39,16 @@ colord("hsl(0, 50%, 50%)").darken(0.25).toHex(); // "#602020"
 colord({ r: 128, g: 128, b: 128, alpha: 0.25 }).toRgbString(); // "rgba(128, 128, 128, 0.25)"
 ```
 
+## Palette API
+
+```ts
+import { tailwindPalette, generatePalette, generateNearestPalette } from '@soybeanjs/colord/palette';
+
+tailwindPalette.slate['500']; // 'oklch(55.4% 0.046 257.417)'
+generatePalette('red'); // generate the palette of the color 'red'
+generateNearestPalette('red'); // find the nearest color in the palette of the color 'red'
+```
+
 ## Supported Color Models
 
 - Hexadecimal strings (including 3, 4 and 8 digit notations)
@@ -53,6 +63,7 @@ colord({ r: 128, g: 128, b: 128, alpha: 0.25 }).toRgbString(); // "rgba(128, 128
 - XYZ objects ([via plugin](#plugins))
 - OKLAB objects ([via plugin](#plugins))
 - OKLCH objects ([via plugin](#plugins))
+
 
 ## More API
 
