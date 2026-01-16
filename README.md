@@ -17,7 +17,7 @@
 
 ## Differences from [colord](https://github.com/omgovich/colord)
 
-- support `oklab` and `oklch` color models
+- support `oklab` and `oklch` color models, and `oklch` is support directly without extra plugin
 - support `palette` API to generate and find the nearest palette color
 - more correct color parsing
 - simplify type definitions
@@ -37,6 +37,7 @@ colord("#ff0000").grayscale().alpha(0.25).toRgbString(); // "rgba(128, 128, 128,
 colord("rgb(192, 192, 192)").isLight(); // true
 colord("hsl(0, 50%, 50%)").darken(0.25).toHex(); // "#602020"
 colord({ r: 128, g: 128, b: 128, alpha: 0.25 }).toRgbString(); // "rgba(128, 128, 128, 0.25)"
+colord('hsl(210.003, 34.547%, 98.004%)').toOklchString(); // 'oklch(98.4% 0.003 247.858)'
 ```
 
 ## Palette API
@@ -62,7 +63,6 @@ generateNearestPalette('red'); // find the nearest color in the palette of the c
 - LAB objects ([via plugin](#plugins))
 - XYZ objects ([via plugin](#plugins))
 - OKLAB objects ([via plugin](#plugins))
-- OKLCH objects ([via plugin](#plugins))
 
 
 ## More API

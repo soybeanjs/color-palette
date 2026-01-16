@@ -136,7 +136,7 @@ export const rgbToOklch = (rgb: RgbColor): OklchColor => {
   return clampOklch({ l, c: chroma, h: hue, alpha: rgb.alpha });
 };
 
-export const parseOklch = ({ l, c, h, alpha = 1 }: InputObject): OklchColor | null => {
+export const parseOriginOklch = ({ l, c, h, alpha = 1 }: InputObject): OklchColor | null => {
   if (!isPresent(l) || !isPresent(c) || !isPresent(h)) return null;
 
   const oklch = clampOklch({
@@ -149,8 +149,8 @@ export const parseOklch = ({ l, c, h, alpha = 1 }: InputObject): OklchColor | nu
   return oklch;
 };
 
-export const parseOklchToRgb = (input: InputObject): RgbColor | null => {
-  const oklch = parseOklch(input);
+export const parseOklch = (input: InputObject): RgbColor | null => {
+  const oklch = parseOriginOklch(input);
 
   if (!oklch) return null;
 
@@ -167,7 +167,7 @@ export const parseOklchToRgb = (input: InputObject): RgbColor | null => {
 const oklchMatcher =
   /^oklch\(\s*([+-]?[\d.]+)%?\s+([+-]?[\d.]+)\s+([+-]?[\d.]+)(deg|grad|rad|turn)?(?:\s*\/\s*([+-]?[\d.]+%?))?\s*\)$/i;
 
-export const parseOklchString = (input: string): OklchColor | null => {
+export const parseOriginOklchString = (input: string): OklchColor | null => {
   const match = oklchMatcher.exec(input);
   if (!match) return null;
 
@@ -181,8 +181,8 @@ export const parseOklchString = (input: string): OklchColor | null => {
   });
 };
 
-export const parseOklchStringToRgb = (input: string): RgbColor | null => {
-  const oklch = parseOklchString(input);
+export const parseOklchString = (input: string): RgbColor | null => {
+  const oklch = parseOriginOklchString(input);
 
   if (!oklch) return null;
 
@@ -207,11 +207,11 @@ export const parseOklchBySource = (source?: InputSource): OklchColor | null => {
   const { input } = source;
 
   if (typeof input === 'string') {
-    return parseOklchString(input);
+    return parseOriginOklchString(input);
   }
 
   if (typeof input === 'object') {
-    return parseOklch(input);
+    return parseOriginOklch(input);
   }
 
   return null;

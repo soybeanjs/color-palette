@@ -3,9 +3,10 @@ import { rgbToHex } from './models/hex';
 import { rgbToRgbString, roundRgb } from './models/rgb';
 import { rgbToHsl, rgbToHslString, roundHsl } from './models/hsl';
 import { rgbToHsv, roundHsv } from './models/hsv';
+import { parseOklchBySource, rgbToOklch, rgbToOklchString, roundOklch, toOklchStringBySource } from './models/oklch';
 import { changeAlpha, getBrightness, invert, lighten, parse, saturate } from './shared';
 import { round } from './utils';
-import type { AnyColor, HslColor, HsvColor, Input, InputSource, RgbColor } from './types';
+import type { AnyColor, HslColor, HsvColor, Input, InputSource, OklchColor, RgbColor } from './types';
 
 /**
  * Parses the given input color and creates a new `Colord` instance.
@@ -120,6 +121,28 @@ export class Colord {
    */
   public toHsv(): HsvColor {
     return roundHsv(rgbToHsv(this.rgb));
+  }
+
+  /**
+   * Converts a color to OKLCH color space and returns an object.
+   * Always includes an alpha value from 0 to 1.
+   */
+  public toOklch(): OklchColor {
+    const source = this.getSource();
+
+    const oklch = parseOklchBySource(source) || rgbToOklch(this.rgb);
+
+    return roundOklch(oklch);
+  }
+
+  /**
+   * Converts a color to OKLCH color space and returns a string representation.
+   * Always includes an alpha value from 0 to 1.
+   */
+  public toOklchString(): string {
+    const source = this.getSource();
+
+    return toOklchStringBySource(source) || rgbToOklchString(this.rgb);
   }
 
   /**
