@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.1.0](https://github.com/soybeanjs/colord/compare/v0.0.8...v0.1.0) (2026-01-16)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: update README to reflect support for oklab, oklch color models and new palette API &nbsp;-&nbsp; by @soybeanjs [<samp>(5e076)</samp>](https://github.com/soybeanjs/colord/commit/5e0761d)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.8](https://github.com/soybeanjs/colord/compare/v0.0.7...v0.0.8) (2026-01-16)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
