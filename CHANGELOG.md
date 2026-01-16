@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [v0.1.1](https://github.com/soybeanjs/colord/compare/v0.1.0...v0.1.1) (2026-01-17)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **types**: add PaletteColorLevel and TailwindPaletteColorKey to exported types &nbsp;-&nbsp; by @soybeanjs [<samp>(e9bd8)</samp>](https://github.com/soybeanjs/colord/commit/e9bd828)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **README**: add Palette API section with examples for TailwindCSS integration &nbsp;-&nbsp; by @soybeanjs [<samp>(43445)</samp>](https://github.com/soybeanjs/colord/commit/4344544)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.0](https://github.com/soybeanjs/colord/compare/v0.0.8...v0.1.0) (2026-01-16)
 
 ### &nbsp;&nbsp;&nbsp;📖 Documentation
