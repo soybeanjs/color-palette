@@ -178,5 +178,5 @@ function parseValue(str: string): number {
 
 export const rgbToRgbString = (rgb: RgbColor): string => {
   const { r, g, b, alpha } = roundRgb(rgb);
-  return alpha < 1 ? `rgb(${r}, ${g}, ${b}, ${alpha})` : `rgb(${r}, ${g}, ${b})`;
+  return alpha < 1 ? `rgb(${r}, ${g}, ${b} / ${alpha})` : `rgb(${r}, ${g}, ${b})`;
 };
