@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [v0.0.8](https://github.com/soybeanjs/colord/compare/v0.0.7...v0.0.8) (2026-01-16)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **common**: add keysOf utility function to retrieve keys of a record &nbsp;-&nbsp; by @soybeanjs [<samp>(25bad)</samp>](https://github.com/soybeanjs/colord/commit/25badee)
+- **palette**: add TailwindCSS oklch palette generation and nearest color matching functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(20174)</samp>](https://github.com/soybeanjs/colord/commit/2017469)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **rgb**: update alpha representation in rgbToRgbString function to use CSS-compatible format &nbsp;-&nbsp; by @soybeanjs [<samp>(5f016)</samp>](https://github.com/soybeanjs/colord/commit/5f016d1)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.7](https://github.com/soybeanjs/colord/compare/v0.0.6...v0.0.7) (2026-01-15)
 
 ### &nbsp;&nbsp;&nbsp;🏡 Chore
