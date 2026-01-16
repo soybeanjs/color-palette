@@ -1,10 +1,6 @@
 import { colord } from '../colord';
-import { oklchPlugin } from '../plugins/oklch';
-import { extend } from '../extend';
 import { keysOf } from '../shared';
 import type { AnyColor, OutputColorMap, OutputFormat, PaletteColorLevel } from '../types';
-
-extend([oklchPlugin]);
 
 const paletteScales: Record<PaletteColorLevel, { l: number; c: number }> = {
   50: { l: 0.08, c: 0.065 },
