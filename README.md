@@ -17,7 +17,8 @@
 
 ## Differences from [colord](https://github.com/omgovich/colord)
 
-- support `oklab` and `oklch` color space
+- support `oklab` and `oklch` color models
+- support `palette` API to generate and find the nearest palette color
 - more correct color parsing
 - simplify type definitions
 - rewrite color string parsing
