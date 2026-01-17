@@ -72,7 +72,7 @@ export const parseHsl = ({ h, s, l, alpha = 1 }: InputObject): RgbColor | null =
 
 export const rgbToHslString = (rgb: RgbColor): string => {
   const { h, s, l, alpha } = roundHsl(rgbToHsl(rgb));
-  return alpha < 1 ? `hsl(${h}, ${s}%, ${l}%, ${alpha})` : `hsl(${h}, ${s}%, ${l}%)`;
+  return alpha < 1 ? `hsl(${h} ${s}% ${l}% / ${alpha})` : `hsl(${h} ${s}% ${l}%)`;
 };
 
 const hslMatcher =
