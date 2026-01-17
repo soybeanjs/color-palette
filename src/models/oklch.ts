@@ -192,7 +192,7 @@ export const parseOklchString = (input: string): RgbColor | null => {
 export const toOklchString = (oklch: OklchColor): string => {
   const { l, c, h, alpha } = roundOklch(oklch);
 
-  return alpha < 1 ? `oklch(${l} ${c} ${h} / ${alpha})` : `oklch(${l} ${c} ${h})`;
+  return alpha < 1 ? `oklch(${l * 100}% ${c} ${h} / ${alpha})` : `oklch(${l * 100}% ${c} ${h})`;
 };
 
 export const rgbToOklchString = (rgb: RgbColor): string => {
