@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [v0.3.0](https://github.com/soybeanjs/colord/compare/v0.2.0...v0.3.0) (2026-01-17)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **palette**: optimize palette types &nbsp;-&nbsp; by @soybeanjs [<samp>(9b3cc)</samp>](https://github.com/soybeanjs/colord/commit/9b3cc17)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **README**: add OKLCH support to the color models list &nbsp;-&nbsp; by @soybeanjs [<samp>(c7319)</samp>](https://github.com/soybeanjs/colord/commit/c73197e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.2.0](https://github.com/soybeanjs/colord/compare/v0.1.1...v0.2.0) (2026-01-17)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
