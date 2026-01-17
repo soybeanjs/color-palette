@@ -12,7 +12,7 @@ async function generateHsl() {
     keysOf(tailwindPalette[key]).forEach(level => {
       const { h, s, l } = colord(tailwindPalette[key][level]).toHsl();
 
-      result[key][level] = `${h}, ${s}%, ${l}%`;
+      result[key][level] = `hsl(${h}, ${s}%, ${l}%)`;
     });
   });
 
