@@ -1,9 +1,9 @@
 import type { OklabColor } from '../types';
 import type { Plugin } from '../extend';
 import {
+  parseOklab,
   parseOklabBySource,
-  parseOklabStringToRgb,
-  parseOklabToRgb,
+  parseOklabString,
   rgbToOklab,
   rgbToOklabString,
   roundOklab,
@@ -36,8 +36,8 @@ export const oklabPlugin: Plugin = (ColordClass, parsers): void => {
     return toOklabStringBySource(source) || rgbToOklabString(this.rgb);
   };
 
-  parsers.string.push([parseOklabStringToRgb, 'oklab']);
-  parsers.object.push([parseOklabToRgb, 'oklab']);
+  parsers.string.push([parseOklabString, 'oklab']);
+  parsers.object.push([parseOklab, 'oklab']);
 };
 
 export default oklabPlugin;

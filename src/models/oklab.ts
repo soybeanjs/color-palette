@@ -51,7 +51,7 @@ export const rgbToOklab = (rgb: RgbColor): OklabColor => {
   return clampOklab({ l, a, b, alpha: rgb.alpha });
 };
 
-export const parseOklab = ({ l, a, b, alpha = 1 }: InputObject): OklabColor | null => {
+export const parseOriginOklab = ({ l, a, b, alpha = 1 }: InputObject): OklabColor | null => {
   if (!isPresent(l) || !isPresent(a) || !isPresent(b)) return null;
 
   const oklab = clampOklab({
@@ -64,8 +64,8 @@ export const parseOklab = ({ l, a, b, alpha = 1 }: InputObject): OklabColor | nu
   return oklab;
 };
 
-export const parseOklabToRgb = (input: InputObject): RgbColor | null => {
-  const oklab = parseOklab(input);
+export const parseOklab = (input: InputObject): RgbColor | null => {
+  const oklab = parseOriginOklab(input);
 
   if (!oklab) return null;
 
@@ -85,7 +85,7 @@ const oklabMatcher = /^oklab\(\s*([+-]?[\d.]+)%?\s+([+-]?[\d.]+)\s+([+-]?[\d.]+)
  * Parses a valid OKLAB CSS color function/string to OKLAB object
  * https://www.w3.org/TR/css-color-4/#specifying-oklab
  */
-const parseOklabString = (input: string): OklabColor | null => {
+const parseOriginOklabString = (input: string): OklabColor | null => {
   const match = oklabMatcher.exec(input);
 
   if (!match) return null;
@@ -104,8 +104,8 @@ const parseOklabString = (input: string): OklabColor | null => {
  * Parses a valid OKLAB CSS color function/string to RGB
  * https://www.w3.org/TR/css-color-4/#specifying-oklab
  */
-export const parseOklabStringToRgb = (input: string): RgbColor | null => {
-  const oklab = parseOklabString(input);
+export const parseOklabString = (input: string): RgbColor | null => {
+  const oklab = parseOriginOklabString(input);
 
   if (!oklab) return null;
 
@@ -132,12 +132,12 @@ export const parseOklabBySource = (source?: InputSource): OklabColor | null => {
 
   // Handle string input
   if (typeof input === 'string') {
-    return parseOklabString(input);
+    return parseOriginOklabString(input);
   }
 
   // Handle object input
   if (typeof input === 'object') {
-    return parseOklab(input);
+    return parseOriginOklab(input);
   }
 
   return null;

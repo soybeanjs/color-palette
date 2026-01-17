@@ -201,7 +201,7 @@ function labToXyzRaw(lab: LabColor): XyzColor {
   };
 }
 
-export const parseLab = ({ l, a, b, alpha = 1 }: InputObject): LabColor | null => {
+export const parseOriginLab = ({ l, a, b, alpha = 1 }: InputObject): LabColor | null => {
   if (!isPresent(l) || !isPresent(a) || !isPresent(b)) return null;
 
   return clampLab({
@@ -212,8 +212,8 @@ export const parseLab = ({ l, a, b, alpha = 1 }: InputObject): LabColor | null =
   });
 };
 
-export const parseLabToRgb = (input: InputObject): RgbColor | null => {
-  const lab = parseLab(input);
+export const parseLab = (input: InputObject): RgbColor | null => {
+  const lab = parseOriginLab(input);
 
   if (!lab) return null;
 
@@ -229,7 +229,7 @@ export const parseLabToRgb = (input: InputObject): RgbColor | null => {
  */
 const labMatcher = /^lab\(\s*([+-]?[\d.]+)%?\s+([+-]?[\d.]+)\s+([+-]?[\d.]+)(?:\s*\/\s*([+-]?[\d.]+%?))?\s*\)$/i;
 
-export const parseLabString = (input: string): LabColor | null => {
+export const parseOriginLabString = (input: string): LabColor | null => {
   const match = labMatcher.exec(input);
   if (!match) return null;
 
@@ -243,8 +243,8 @@ export const parseLabString = (input: string): LabColor | null => {
   });
 };
 
-export const parseLabStringToRgb = (input: string): RgbColor | null => {
-  const lab = parseLabString(input);
+export const parseLabString = (input: string): RgbColor | null => {
+  const lab = parseOriginLabString(input);
 
   if (!lab) return null;
 
@@ -269,11 +269,11 @@ export const parseLabBySource = (source?: InputSource): LabColor | null => {
   const { input } = source;
 
   if (typeof input === 'string') {
-    return parseLabString(input);
+    return parseOriginLabString(input);
   }
 
   if (typeof input === 'object') {
-    return parseLab(input);
+    return parseOriginLab(input);
   }
 
   return null;

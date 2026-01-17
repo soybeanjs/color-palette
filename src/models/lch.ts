@@ -149,7 +149,7 @@ export const lchaToRgb = (lcha: LchColor): RgbColor => {
   return clampRgb(rgb);
 };
 
-export const parseLch = ({ l, c, h, alpha = 1 }: InputObject): LchColor | null => {
+export const parseOriginLch = ({ l, c, h, alpha = 1 }: InputObject): LchColor | null => {
   if (!isPresent(l) || !isPresent(c) || !isPresent(h)) return null;
 
   return clampLch({
@@ -160,8 +160,8 @@ export const parseLch = ({ l, c, h, alpha = 1 }: InputObject): LchColor | null =
   });
 };
 
-export const parseLchToRgb = (input: InputObject): RgbColor | null => {
-  const lch = parseLch(input);
+export const parseLch = (input: InputObject): RgbColor | null => {
+  const lch = parseOriginLch(input);
 
   if (!lch) return null;
 
@@ -178,7 +178,7 @@ export const parseLchToRgb = (input: InputObject): RgbColor | null => {
 const lchaMatcher =
   /^lch\(\s*([+-]?[\d.]+)%?\s+([+-]?[\d.]+)\s+([+-]?[\d.]+)(deg|grad|rad|turn)?(?:\s*\/\s*([+-]?[\d.]+%?))?\s*\)$/i;
 
-export const parseLchString = (input: string): LchColor | null => {
+export const parseOriginLchString = (input: string): LchColor | null => {
   const match = lchaMatcher.exec(input);
   if (!match) return null;
 
@@ -192,8 +192,8 @@ export const parseLchString = (input: string): LchColor | null => {
   });
 };
 
-export const parseLchStringToRgb = (input: string): RgbColor | null => {
-  const lch = parseLchString(input);
+export const parseLchString = (input: string): RgbColor | null => {
+  const lch = parseOriginLchString(input);
 
   if (!lch) return null;
 
@@ -218,11 +218,11 @@ export const parseLchBySource = (source?: InputSource): LchColor | null => {
   const { input } = source;
 
   if (typeof input === 'string') {
-    return parseLchString(input);
+    return parseOriginLchString(input);
   }
 
   if (typeof input === 'object') {
-    return parseLch(input);
+    return parseOriginLch(input);
   }
 
   return null;

@@ -1,9 +1,9 @@
 import type { LchColor } from '../types';
 import type { Plugin } from '../extend';
 import {
+  parseLch,
   parseLchBySource,
-  parseLchStringToRgb,
-  parseLchToRgb,
+  parseLchString,
   rgbToLch,
   rgbToLchString,
   roundLch,
@@ -46,8 +46,8 @@ export const lchPlugin: Plugin = (ColordClass, parsers): void => {
     return toLchStringBySource(source) || rgbToLchString(this.rgb);
   };
 
-  parsers.string.push([parseLchStringToRgb, 'lch']);
-  parsers.object.push([parseLchToRgb, 'lch']);
+  parsers.string.push([parseLchString, 'lch']);
+  parsers.object.push([parseLch, 'lch']);
 };
 
 export default lchPlugin;

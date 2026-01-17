@@ -1,6 +1,6 @@
 import type { XyzColor } from '../types';
 import type { Plugin } from '../extend';
-import { parseXyzBySource, parseXyzToRgb, rgbToXyz, roundXyz } from '../models/xyz';
+import { parseXyz, parseXyzBySource, rgbToXyz, roundXyz } from '../models/xyz';
 
 declare module '../colord' {
   interface Colord {
@@ -22,7 +22,7 @@ export const xyzPlugin: Plugin = (ColordClass, parsers): void => {
     return roundXyz(xyz);
   };
 
-  parsers.object.push([parseXyzToRgb, 'xyz']);
+  parsers.object.push([parseXyz, 'xyz']);
 };
 
 export default xyzPlugin;

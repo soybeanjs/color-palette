@@ -72,7 +72,7 @@ export const rgbToXyz = (rgb: RgbColor): XyzColor => {
   return clampXyz(xyz);
 };
 
-export const parseXyz = ({ x, y, z, alpha = 1 }: InputObject): XyzColor | null => {
+export const parseOriginXyz = ({ x, y, z, alpha = 1 }: InputObject): XyzColor | null => {
   if (!isPresent(x) || !isPresent(y) || !isPresent(z)) return null;
 
   return clampXyz({
@@ -83,8 +83,8 @@ export const parseXyz = ({ x, y, z, alpha = 1 }: InputObject): XyzColor | null =
   });
 };
 
-export const parseXyzToRgb = (input: InputObject): RgbColor | null => {
-  const xyz = parseXyz(input);
+export const parseXyz = (input: InputObject): RgbColor | null => {
+  const xyz = parseOriginXyz(input);
 
   if (!xyz) return null;
 
@@ -97,7 +97,7 @@ export const parseXyzBySource = (source?: InputSource): XyzColor | null => {
   const { input } = source;
 
   if (typeof input === 'object') {
-    return parseXyz(input);
+    return parseOriginXyz(input);
   }
 
   return null;

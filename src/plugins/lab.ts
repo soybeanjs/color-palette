@@ -1,9 +1,9 @@
 import type { AnyColor, LabColor } from '../types';
 import type { Plugin } from '../extend';
 import {
+  parseLab,
   parseLabBySource,
-  parseLabStringToRgb,
-  parseLabToRgb,
+  parseLabString,
   rgbToLab,
   rgbToLabString,
   roundLab,
@@ -59,8 +59,8 @@ export const labPlugin: Plugin = (ColordClass, parsers): void => {
     return clamp(round(d, 3));
   };
 
-  parsers.string.push([parseLabStringToRgb, 'lab']);
-  parsers.object.push([parseLabToRgb, 'lab']);
+  parsers.string.push([parseLabString, 'lab']);
+  parsers.object.push([parseLab, 'lab']);
 };
 
 export default labPlugin;
