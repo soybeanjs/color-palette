@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.3.4](https://github.com/soybeanjs/colord/compare/v0.3.3...v0.3.4) (2026-01-17)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **oklch**: update toOklchString to format lightness as a percentage &nbsp;-&nbsp; by @soybeanjs [<samp>(b2738)</samp>](https://github.com/soybeanjs/colord/commit/b273808)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.3.3](https://github.com/soybeanjs/colord/compare/v0.3.2...v0.3.3) (2026-01-17)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
