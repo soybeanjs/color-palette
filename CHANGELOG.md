@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [v0.2.0](https://github.com/soybeanjs/colord/compare/v0.1.1...v0.2.0) (2026-01-17)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **oklch**: move oklch to builtin color models &nbsp;-&nbsp; by @soybeanjs [<samp>(ad02a)</samp>](https://github.com/soybeanjs/colord/commit/ad02a24)
+- **palette**: add HSL palette and generation scripts &nbsp;-&nbsp; by @soybeanjs [<samp>(89507)</samp>](https://github.com/soybeanjs/colord/commit/895075c)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **models**: rename parsing functions for clarity and consistency across color models &nbsp;-&nbsp; by @soybeanjs [<samp>(69866)</samp>](https://github.com/soybeanjs/colord/commit/69866f4)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.1](https://github.com/soybeanjs/colord/compare/v0.1.0...v0.1.1) (2026-01-17)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
