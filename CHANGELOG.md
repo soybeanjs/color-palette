@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [v0.3.3](https://github.com/soybeanjs/colord/compare/v0.3.2...v0.3.3) (2026-01-17)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **hsl**: update HSL string format to use 'hsl()' syntax with alpha channel support &nbsp;-&nbsp; by @soybeanjs [<samp>(cdcd6)</samp>](https://github.com/soybeanjs/colord/commit/cdcd6f1)
+- **palette**: update HSL string format to use space-separated values in palette definitions &nbsp;-&nbsp; by @soybeanjs [<samp>(f4c19)</samp>](https://github.com/soybeanjs/colord/commit/f4c1975)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.3.2](https://github.com/soybeanjs/colord/compare/v0.3.1...v0.3.2) (2026-01-17)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
