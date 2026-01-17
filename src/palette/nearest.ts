@@ -2,9 +2,10 @@ import { colord } from '../colord';
 import { extend } from '../extend';
 import { labPlugin } from '../plugins/lab';
 import { keysOf } from '../shared';
-import type { AnyColor, NearestPalette, OutputColorMap, OutputFormat, PaletteColorLevel } from '../types';
+import type { AnyColor } from '../types';
 import { tailwindPalette } from './constant';
 import { formatOutput } from './generate';
+import type { NearestPalette, OutputColorMap, OutputFormat, PaletteColorLevel } from './types';
 
 extend([labPlugin]);
 

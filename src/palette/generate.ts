@@ -1,6 +1,7 @@
 import { colord } from '../colord';
 import { keysOf } from '../shared';
-import type { AnyColor, OutputColorMap, OutputFormat, PaletteColorLevel } from '../types';
+import type { AnyColor } from '../types';
+import type { OutputColorMap, OutputFormat, PaletteColorLevel } from './types';
 
 const paletteScales: Record<PaletteColorLevel, { l: number; c: number }> = {
   50: { l: 0.08, c: 0.065 },

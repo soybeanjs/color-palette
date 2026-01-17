@@ -13,7 +13,5 @@ export type {
   OklchColor,
   RgbColor,
   XyzColor,
-  AnyColor,
-  PaletteColorLevel,
-  TailwindPaletteColorKey
+  AnyColor
 } from './types';

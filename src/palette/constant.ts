@@ -1,11 +1,11 @@
-import type { TailwindPaletteColor } from '../types';
+import type { TailwindPalette } from './types';
 
 /**
  * TailwindCSS v4 official oklch palette data
  *
  * the format is `oklch` string, like `oklch(98.4% 0.003 247.858)`
  */
-export const tailwindPalette: TailwindPaletteColor = {
+export const tailwindPalette: TailwindPalette = {
   slate: {
     '50': 'oklch(98.4% 0.003 247.858)',
     '100': 'oklch(96.8% 0.007 247.896)',
@@ -299,7 +299,7 @@ export const tailwindPalette: TailwindPaletteColor = {
  *
  * the format is `hsl` string, but no `hsl()` like `210.003, 34.547%, 98.004%`
  */
-export const tailwindPaletteHsl: TailwindPaletteColor = {
+export const tailwindPaletteHsl: TailwindPalette = {
   slate: {
     '50': '210.003, 34.547%, 98.004%',
     '100': '209.999, 40.553%, 96.05%',
