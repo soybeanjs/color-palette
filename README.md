@@ -56,6 +56,7 @@ generateNearestPalette('red'); // find the nearest color in the palette of the c
 - RGB strings and objects
 - HSL strings and objects
 - HSV objects
+- OKLCH objects and strings
 - Color names ([via plugin](#plugins))
 - HWB objects and strings ([via plugin](#plugins))
 - CMYK objects and strings ([via plugin](#plugins))
