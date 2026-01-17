@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.3.2](https://github.com/soybeanjs/colord/compare/v0.3.1...v0.3.2) (2026-01-17)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **palette**: update HSL format to include 'hsl()' syntax in palette definitions &nbsp;-&nbsp; by @soybeanjs [<samp>(f3194)</samp>](https://github.com/soybeanjs/colord/commit/f31943a)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.3.1](https://github.com/soybeanjs/colord/compare/v0.3.0...v0.3.1) (2026-01-17)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
