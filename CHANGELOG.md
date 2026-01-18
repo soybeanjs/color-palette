@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [v0.3.5](https://github.com/soybeanjs/colord/compare/v0.3.4...v0.3.5) (2026-01-18)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **oklch**: round lightness value to one decimal place in toOklchString &nbsp;-&nbsp; by @soybeanjs [<samp>(56693)</samp>](https://github.com/soybeanjs/colord/commit/5669339)
+- **types**: update generic type for default format value &nbsp;-&nbsp; by @soybeanjs [<samp>(59b51)</samp>](https://github.com/soybeanjs/colord/commit/59b510d)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.3.4](https://github.com/soybeanjs/colord/compare/v0.3.3...v0.3.4) (2026-01-17)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
