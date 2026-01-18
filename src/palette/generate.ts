@@ -45,7 +45,7 @@ const darkLightnessMap: Record<number, number> = {
  * @param [format] - the format of the output color, default is 'oklch'
  * @returns the palette
  */
-export function generatePalette<F extends OutputFormat>(input: AnyColor, format: F = 'oklch' as F) {
+export function generatePalette<F extends OutputFormat = 'oklch'>(input: AnyColor, format: F = 'oklch' as F) {
   const baseColor = colord(input);
 
   if (!baseColor.isValid()) {
