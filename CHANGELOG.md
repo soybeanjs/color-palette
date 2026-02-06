@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.4.0](https://github.com/soybeanjs/colord/compare/v0.3.5...v0.4.0) (2026-02-06)
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **palette**: update tailwindPalette &nbsp;-&nbsp; by @soybeanjs [<samp>(575a7)</samp>](https://github.com/soybeanjs/colord/commit/575a7ee)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.3.5](https://github.com/soybeanjs/colord/compare/v0.3.4...v0.3.5) (2026-01-18)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
