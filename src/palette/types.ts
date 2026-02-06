@@ -33,6 +33,14 @@ export type TailwindPaletteKey =
 
 export type TailwindPaletteLevelColorKey = `${TailwindPaletteKey}.${PaletteColorLevel}`;
 
+export interface PaletteColorItem {
+  level: PaletteColorLevel;
+  hex: string;
+  rgb: string;
+  hsl: string;
+  oklch: string;
+}
+
 /**
  * the tailwind palette
  *
@@ -40,7 +48,7 @@ export type TailwindPaletteLevelColorKey = `${TailwindPaletteKey}.${PaletteColor
  */
 export type TailwindPalette = {
   [K in TailwindPaletteKey]: {
-    [L in PaletteColorLevel]: string;
+    [L in PaletteColorLevel]: PaletteColorItem;
   };
 };
 

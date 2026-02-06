@@ -1,7 +1,7 @@
 import { colord } from '../colord';
 import { keysOf } from '../shared';
 import type { AnyColor } from '../types';
-import type { OutputColorMap, OutputFormat, PaletteColorLevel } from './types';
+import type { OutputColorMap, OutputFormat, PaletteColorItem, PaletteColorLevel } from './types';
 
 const paletteScales: Record<PaletteColorLevel, { l: number; c: number }> = {
   50: { l: 0.08, c: 0.065 },
@@ -198,4 +198,20 @@ export function formatOutput<F extends OutputFormat>(input: AnyColor, format: F 
   }
 
   return value as OutputColorMap[F];
+}
+
+export function getPaletteColorByFormat<F extends OutputFormat>(item: PaletteColorItem, format: F = 'oklch' as F) {
+  const map = {
+    hex: 'hex',
+    rgb: 'rgb',
+    rgbString: 'rgb',
+    oklch: 'oklch',
+    oklchString: 'oklch',
+    hsl: 'hsl',
+    hslString: 'hsl'
+  } as Record<OutputFormat, Exclude<keyof PaletteColorItem, 'level'>>;
+
+  const colorValue = item[map[format]];
+
+  return formatOutput(colorValue, format);
 }

@@ -4,7 +4,7 @@ import { labPlugin } from '../plugins/lab';
 import { keysOf } from '../shared';
 import type { AnyColor } from '../types';
 import { tailwindPalette } from './constant';
-import { formatOutput } from './generate';
+import { formatOutput, getPaletteColorByFormat } from './generate';
 import type { NearestPalette, OutputColorMap, OutputFormat, PaletteColorLevel } from './types';
 
 extend([labPlugin]);
@@ -40,7 +40,7 @@ export function generateNearestPalette<F extends OutputFormat>(input: AnyColor, 
     keysOf(palette).forEach(level => {
       if (isFound) return;
 
-      const color = palette[level];
+      const color = getPaletteColorByFormat(palette[level], format);
       const delta = inputColor.delta(color);
       if (delta < minDelta) {
         minDelta = delta;
@@ -65,7 +65,7 @@ export function generateNearestPalette<F extends OutputFormat>(input: AnyColor, 
 
   result.palette = keysOf(palette).reduce(
     (acc, level) => {
-      acc[level] = formatOutput(palette[level], format);
+      acc[level] = getPaletteColorByFormat(palette[level], format);
       return acc;
     },
     {} as Record<PaletteColorLevel, OutputColorMap[F]>
