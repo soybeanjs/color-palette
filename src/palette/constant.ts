@@ -1,4 +1,22 @@
-import type { TailwindPalette } from './types';
+import type { SimplePalette, TailwindPalette } from './types';
+
+export const simplePalette = {
+  inherit: 'inherit',
+  current: 'currentColor',
+  transparent: 'transparent',
+  black: {
+    hex: '#000000',
+    rgb: 'rgb(0 0 0)',
+    hsl: 'hsl(0 0% 0%)',
+    oklch: 'oklch(0% 0 0)'
+  },
+  white: {
+    hex: '#ffffff',
+    rgb: 'rgb(255 255 255)',
+    hsl: 'hsl(0 0% 100%)',
+    oklch: 'oklch(100% 0 0)'
+  }
+} as const satisfies SimplePalette;
 
 export const tailwindPalette: TailwindPalette = {
   neutral: {

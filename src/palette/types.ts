@@ -52,6 +52,10 @@ export type TailwindPalette = {
   };
 };
 
+export type SimplePaletteKey = 'inherit' | 'current' | 'transparent' | 'black' | 'white';
+
+export type SimplePalette = Record<SimplePaletteKey, string | Omit<PaletteColorItem, 'level'>>;
+
 export type OutputColorMap = {
   hex: string;
   rgb: RgbColor;
