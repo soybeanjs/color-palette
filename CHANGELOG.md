@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.4.2](https://github.com/soybeanjs/colord/compare/v0.4.1...v0.4.2) (2026-02-07)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **palette**: export simplePalette from constant &nbsp;-&nbsp; by @soybeanjs [<samp>(02b38)</samp>](https://github.com/soybeanjs/colord/commit/02b380d)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.4.1](https://github.com/soybeanjs/colord/compare/v0.4.0...v0.4.1) (2026-02-06)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
